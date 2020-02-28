@@ -34,7 +34,7 @@ h2:after {
     left: 0px;
     right: auto;
 
-	background-image: url(/Users/mengyi/Desktop/appjs/public/photos/profile.jpeg);
+	background-image: url(/photos/profile.jpeg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
