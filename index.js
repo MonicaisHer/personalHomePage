@@ -19,7 +19,7 @@ class Member {
   }
 }
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
 	/*res.set('Content-Type', 'text/html');
