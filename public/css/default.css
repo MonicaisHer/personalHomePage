@@ -1,0 +1,187 @@
+body {
+	background-color:#ffffff;
+	margin: 0px;
+
+	font-family: 'Varela round', sans-serif;
+	color: #10161A;
+}
+
+h1 {
+	font-size: 3vw;
+	font-family: 'Montserrat';
+    font-weight: 700;
+}
+
+h2 {
+	font-size: 5vh;
+    margin-bottom: 8vh;
+    font-family: Montserrat;
+}
+h2:after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 40px;
+    background-color: #61ceaa;
+    margin-top: 20px;
+}
+#titleBackground {
+	height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    bottom: auto;
+    left: 0px;
+    right: auto;
+
+	background-image: url(/Users/mengyi/Desktop/appjs/public/photos/profile.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#naviBar{
+	position: fixed;
+    background-color: white;
+    top: 0px;
+    bottom: auto;
+    left: 0px;
+    right: auto;
+    width: 100%;
+    height: 45px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 999;
+}
+#naviBar a {
+    color: black;
+    text-decoration: none;
+}
+#naviBar a.linkActive {
+    color: #61ceaa!important;
+}
+#naviBar a:hover {
+    color: #61ceaa;
+    transition: 400ms;
+}
+#naviBar a:hover:after, #naviBar a.linkActive:after {
+    width: 100%;
+}
+#naviBar a:after {
+    content: '';
+    width: 0px;
+    height: 2px;
+    display: block;
+    background: #61ceaa;
+    transition: 300ms;
+}
+#naviBar ul{
+	margin: 0;
+    margin-right: 100px;
+    flex: 0 0 auto;
+}
+#naviBar > ul > li {
+    float: left;
+    list-style-type: none;
+    margin-left: 30px;
+}
+.allDiv{
+    position: relative;
+    top: 0px;
+    bottom: auto;
+    left: 0px;
+    right: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#titleContainer{
+	height: 100vh;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color:#fff;
+}
+.hoverEffect{
+    position: relative;
+}
+#profileContent{
+	flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-left: 10vw;
+}
+#titleContainer ul {
+	margin-top:0px;
+	list-style-type: square;
+}
+#workContainer h3{
+	font-size: 3vh;
+	font-family: 'Montserrat';
+    font-weight: 700;
+    margin-bottom:0px;
+}
+#workContainer ul{
+	color: grey;
+	font-size: 20px;
+	margin-bottom: 30px;
+	margin-top:0.5em;
+}
+.hoverEffect {
+	flex: 0 0 30%;
+    box-shadow: 6px 6px 9px 5px #7373734d;
+    padding: 12px;
+    box-sizing: border-box;
+    position: relative;
+}
+.hoverEffect > * {
+    position: relative;
+    z-index: 1;
+}
+.hoverEffect:hover:after{
+	width:100%;
+}
+.hoverEffect:after {
+	background-image: 
+	linear-gradient(45deg, #8ae8c9,#61ceaa, #29624f, #4ecba1);
+    content: "";
+    background-color: #61ceaa85;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0%;
+    z-index: 0;
+    -webkit-transition: 0.2s width;
+    transition: 0.4s width;
+}
+.hoverEffect > h3 {
+    transition: 0.3s;
+}
+.hoverEffect:hover > h3 {
+    color: #ffffff;
+}
+.paddingContainer{
+	padding-left: 5vh;
+    padding-top: 5vh;
+    box-sizing: border-box;
+    padding: 50px 5vw;
+}
+.sectionContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+}
+.sectionContainer > h2 {
+    flex: 0 0 100%;
+}
+.lightContainer {
+    background-color:#f9f9f9;
+}
+.darkContainer{
+	background-color:#e6e8e8;
+}
