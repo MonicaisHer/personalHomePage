@@ -33,7 +33,6 @@ h2:after {
     bottom: auto;
     left: 0px;
     right: auto;
-
 	background-image: url(/photos/profile.jpeg);
     background-position: center;
     background-repeat: no-repeat;
@@ -162,6 +161,53 @@ h2:after {
 }
 .hoverEffect:hover > h3 {
     color: #ffffff;
+}
+.doorEffect {
+    position: relative;
+    overflow: hidden;
+    flex:0 0 30%;
+}
+.doorEffectMiddle{
+    padding-top: 100%;
+    position: relative;
+}
+.doorEffectInner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.doorEffectBackground {
+    background-image: url(/photos/courseBackground.jpg);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 1s;
+}
+.doorEffectInner:hover .doorEffectBackground {
+    filter: blur(10px) brightness(70%);
+    transform: scale(1.10);
+}
+.doorEffectContent {
+    color: #c7e3e6;
+    position: relative;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s;
+    transform: translateY(10px);
+}
+.doorEffectInner:hover .doorEffectContent {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
 }
 .paddingContainer{
 	padding-left: 5vh;
