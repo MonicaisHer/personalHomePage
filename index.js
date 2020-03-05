@@ -19,10 +19,10 @@ class Member {
   }
 }
 
-app.use(express.static('public'));
+app.use(express.static(__dirname+'/public'));
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.get('/test', (req, res) => {
