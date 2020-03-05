@@ -21,7 +21,7 @@ class Member {
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+app.get('/test', (req, res) => {
 	/*res.set('Content-Type', 'text/html');
 
 	let output ='';
