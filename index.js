@@ -1,6 +1,18 @@
+const fs = require('fs');
+const https = require('https');
 const express = require('express');
+
+const hostname = 'monica-wang.com';
+const port = 443;
+
+const httpsOptions = {
+	cert: fs.readFileSync(__dirname+'/ssl/2020.crt'),
+	ca: fs.readFileSync(__dirname+'/ssl/2020.ca-bundle'),
+	key: fs.readFileSync(__dirname+'/ssl/2020.key')
+};
+
 const app = express();
-const port = 80;
+const httpsServer = https.createServer(httpsOptions, app);
 
 var i=0;
 
@@ -83,4 +95,4 @@ app.get('/subtract', (req, res) => {
 	res.status(200).send('value of i: ' + --i);
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+httpsServer.listen(port, hostname, () => console.log(`Example app listening on port ${port}!`));
