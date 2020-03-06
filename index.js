@@ -95,4 +95,4 @@ app.get('/subtract', (req, res) => {
 	res.status(200).send('value of i: ' + --i);
 });
 
-httpsServer.listen(port, hostname, () => console.log(`Example app listening on port ${port}!`));
+httpsServer.listen(port, () => console.log(`Example app listening on port ${port}!`));
