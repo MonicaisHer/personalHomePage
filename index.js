@@ -98,5 +98,22 @@ app.get('/subtract', (req, res) => {
 	res.status(200).send('value of i: ' + --i);
 });
 
+app.get('/comments', (req, res) => {
+	let dummyData = [
+		{
+			"name": "Hailey",
+			"content": "I really love the design, it's simple but chic!",
+			"time": 1584289215
+		},
+		{
+			"name": "Jerry",
+			"content": "Amazing job",
+			"time": 1583918915
+		}
+	];
+
+	res.status(200).json(dummyData);
+});
+
 httpServer.listen(httpPort, () => console.log(`HTTP Server listening on port ${httpPort}!`));
 httpsServer.listen(httpsPort, () => console.log(`HTTPS Server listening on port ${httpsPort}!`));

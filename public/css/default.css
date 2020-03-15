@@ -134,6 +134,7 @@ h2:after {
     padding: 12px;
     box-sizing: border-box;
     position: relative;
+    border-radius: 20px;
 }
 .hoverEffect > * {
     position: relative;
@@ -155,6 +156,7 @@ h2:after {
     z-index: 0;
     -webkit-transition: 0.2s width;
     transition: 0.4s width;
+    border-radius: 20px;
 }
 .hoverEffect > h3 {
     transition: 0.3s;
@@ -167,6 +169,7 @@ h2:after {
     overflow: hidden;
     flex:0 0 30%;
     margin-bottom: 28px;
+    border-radius: 20px;
 }
 .doorEffectMiddle{
     padding-top: 100%;
@@ -186,7 +189,6 @@ h2:after {
     justify-content: center;
 }
 .doorEffectBackground {
-    background-image: url(/photos/courseBackground.jpg);
     position: absolute;
     top: 0;
     bottom: 0;
