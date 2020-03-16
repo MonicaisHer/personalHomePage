@@ -2,6 +2,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const express = require('express');
+const mysql = require('mysql');
 
 const hostname = 'monica-wang.com';
 const httpPort = 80;
@@ -12,6 +13,13 @@ const httpsOptions = {
 	ca: fs.readFileSync(__dirname+'/ssl/2020.ca-bundle'),
 	key: fs.readFileSync(__dirname+'/ssl/2020.key')
 };
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'node',
+  password: 'sjahdnkasqs34r321r4',
+  database: 'personalhomepage'
+});
 
 const app = express();
 const httpsServer = https.createServer(httpsOptions, app);
@@ -99,21 +107,31 @@ app.get('/subtract', (req, res) => {
 });
 
 app.get('/comments', (req, res) => {
-	let dummyData = [
-		{
-			"name": "Hailey",
-			"content": "I really love the design, it's simple but chic!",
-			"time": 1584289215
-		},
-		{
-			"name": "Jerry",
-			"content": "Amazing job",
-			"time": 1583918915
-		}
-	];
+connection.query('SELECT * FROM comments', (err,rows) => {
+  if(err) throw err;
 
-	res.status(200).json(dummyData);
+  console.log('Data received from Db:');
+  console.log(rows);
+
+let comments=[];
+for(let i=0; i<rows.length;i++){
+	comments.push({
+		"name":rows[i].name,
+		"content":rows[i].content,
+		"time":rows[i].time
+	});
+	
+}
+console.log(comments);
+  res.status(200).json(comments);
+
+
+	});
 });
 
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('Connected!');
 httpServer.listen(httpPort, () => console.log(`HTTP Server listening on port ${httpPort}!`));
 httpsServer.listen(httpsPort, () => console.log(`HTTPS Server listening on port ${httpsPort}!`));
+});
