@@ -31,7 +31,37 @@ jQuery(function($){
 	 		alert(err.Message);
  		}
 	});
+
+	$('#submitComment').on('click',function(){
+		
+		let name = $('#nameContent').val();
+		let comment = $('#commentContent').val();
+
+		let formData = {
+			"name":name,
+			"comment":comment
+		};
+
+		console.log(formData);
+
+		$.ajax({
+			url : '/comments',
+			type: "POST",
+			data : formData,
+			success: function(data, textStatus, jqXHR){
+					//data - response from server
+				//alert('successfully submitted^^');
+
+				$('#comments').prepend('<div class="singleComment"><h4>'+name+'</h4><span>...</span><p>'+comment+'</p></div>');
+			},
+			error: function (jqXHR, textStatus, errorThrown){
+				alert('something went wrong><');
+			}
+		});
+
+	});
 });
+
 console.log('hello');
 //ajax: asynchronous json and xml -> non-blocking
 //json: javascript object notation
@@ -42,7 +72,7 @@ console.log('hello');
 //			- state: no matter who asks, the server will always respond in the same way. It will represent the current state of the system (of the requested object)
 //			- transfer: with a RESTful API, the client can change the state of an object and the system. He can instruct the server to TRANSFER from the current state to the next state
 //			- methods: 	GET: 	get the state of an object
-//			-			POST: 	edit an object
+//			-			POST: 	edit/create/delete an object
 //			-			PUT: 	create a new object
 //			-			DELETE: delete an object
 //nbsp: non breaking space

@@ -15,10 +15,10 @@ const httpsOptions = {
 };
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'node',
-  password: 'sjahdnkasqs34r321r4',
-  database: 'personalhomepage'
+	host: 'localhost',
+	user: 'node',
+	password: 'sjahdnkasqs34r321r4',
+	database: 'personalhomepage'
 });
 
 const app = express();
@@ -43,6 +43,8 @@ class Member {
 }
 
 app.use(express.static(__dirname+'/public'));
+app.use(express.urlencoded());
+app.use(express.json());
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
@@ -107,31 +109,42 @@ app.get('/subtract', (req, res) => {
 });
 
 app.get('/comments', (req, res) => {
-connection.query('SELECT * FROM comments', (err,rows) => {
-  if(err) throw err;
+	connection.query('SELECT * FROM comments ORDER BY time DESC', (err,rows) => {
+	 	if(err) throw err;
+	  	console.log('Data received from Db:');
+	  	console.log(rows);
 
-  console.log('Data received from Db:');
-  console.log(rows);
-
-let comments=[];
-for(let i=0; i<rows.length;i++){
-	comments.push({
-		"name":rows[i].name,
-		"content":rows[i].content,
-		"time":rows[i].time
-	});
-	
-}
-console.log(comments);
-  res.status(200).json(comments);
-
-
+		let comments=[];
+		for(let i=0; i<rows.length;i++){
+			comments.push({
+				"name":rows[i].name,
+				"content":rows[i].content,
+				"time":rows[i].time
+			});
+		}
+		console.log(comments);
+		res.status(200).json(comments);
 	});
 });
 
+app.post('/comments',(req,res)=>{
+	console.log(req.body);
+
+	var date = new Date();
+	var timestamp = parseInt(date.getTime() / 1000);
+
+	console.log('INSERT INTO comments (name,time,content) VALUES("'+req.body.name+'",'+timestamp+',"'+req.body.comment+'")');
+
+	connection.query('INSERT INTO comments (name,time,content) VALUES("'+req.body.name+'",'+timestamp+',"'+req.body.comment+'")', (err,rows) => {
+	 	if(err) res.status(500);
+	 	res.status(200).send();
+	});
+});
+
+
 connection.connect((err) => {
-  if (err) throw err;
-  console.log('Connected!');
-httpServer.listen(httpPort, () => console.log(`HTTP Server listening on port ${httpPort}!`));
-httpsServer.listen(httpsPort, () => console.log(`HTTPS Server listening on port ${httpsPort}!`));
+	if (err) throw err;
+	console.log('Connected!');
+	httpServer.listen(httpPort, () => console.log(`HTTP Server listening on port ${httpPort}!`));
+	httpsServer.listen(httpsPort, () => console.log(`HTTPS Server listening on port ${httpsPort}!`));
 });

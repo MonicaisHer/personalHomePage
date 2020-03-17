@@ -144,8 +144,7 @@ h2:after {
 	width:100%;
 }
 .hoverEffect:after {
-	background-image: 
-	linear-gradient(45deg, #8ae8c9,#61ceaa, #29624f, #4ecba1);
+	background-image: linear-gradient(30deg, #5d6965,#a5afac);
     content: "";
     background-color: #61ceaa85;
     position: absolute;
