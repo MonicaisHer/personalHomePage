@@ -240,3 +240,46 @@ h2:after {
 .darkContainer{
 	background-color:#e6e8e8;
 }
+
+
+/*.contactMe h3 {
+    text-align: center;
+}
+.contactMe form{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 0px auto;
+}*/
+
+.contactMe form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.contactMe form > *:first-child {
+    flex: 0 0 30%;
+    margin-right:15px;
+}
+.contactMe form > *:nth-child(2) {
+    flex: 0 0 60%;
+}
+.contactMe form > *:nth-child(3) {
+    flex: 0 0 calc(10% - 15px);
+    box-sizing:border-box;
+    margin-left:15px;
+}
+
+.singleComment {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid black;
+    margin-top: 40px;
+}
+.singleComment > *:first-child {
+    flex: 0 0 30%;
+}
+.singleComment > *:nth-child(2) {
+    flex: 0 0 60%;
+    margin-right:10%;
+}

@@ -3,6 +3,8 @@ const http = require('http');
 const https = require('https');
 const express = require('express');
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const { body, validationResult } = require('express-validator');
 
 const hostname = 'monica-wang.com';
 const httpPort = 80;
@@ -43,8 +45,8 @@ class Member {
 }
 
 app.use(express.static(__dirname+'/public'));
-app.use(express.urlencoded());
-app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
@@ -127,18 +129,32 @@ app.get('/comments', (req, res) => {
 	});
 });
 
-app.post('/comments',(req,res)=>{
+app.post('/comments',[
+	body('name').isLength({ min: 3 }).escape(),
+	body('comment').isLength({ min: 3 }).escape()
+],(req,res)=>{
 	console.log(req.body);
 
-	var date = new Date();
-	var timestamp = parseInt(date.getTime() / 1000);
+	var err = validationResult(req);
+	if (!err.isEmpty()) {
+		console.log(err.mapped())
+		return res.status(400).json({ errors: err.array() });
+	} else {
+		console.log(req.body);
 
-	console.log('INSERT INTO comments (name,time,content) VALUES("'+req.body.name+'",'+timestamp+',"'+req.body.comment+'")');
+		var date = new Date();
+		var timestamp = parseInt(date.getTime() / 1000);
 
-	connection.query('INSERT INTO comments (name,time,content) VALUES("'+req.body.name+'",'+timestamp+',"'+req.body.comment+'")', (err,rows) => {
-	 	if(err) res.status(500);
-	 	res.status(200).send();
-	});
+		console.log('INSERT INTO comments (name,time,content) VALUES("'+req.body.name+'",'+timestamp+',"'+req.body.comment+'")');
+
+		connection.query('INSERT INTO comments (name,time,content) VALUES(?,?,?)', [req.body.name, timestamp, req.body.comment], (err,rows) => {
+		 	if(err) {
+		 		res.status(500).send();
+		 	} else {
+		 		res.status(200).send();
+		 	}
+		});
+	}
 });
 
 

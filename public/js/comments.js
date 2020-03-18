@@ -1,29 +1,33 @@
 jQuery(function($){
+
+var getFormattedTime = function(commentTime) {
+	let monthName=[
+		'Jan',
+		'Feb',
+		'Mar',
+		'Apr',
+		'May',
+		'Jun',
+		'Jul',
+		'Aug',
+		'Sep',
+		'Oct',
+		'Nov',
+		'Dec'
+	];
+	let formattedTime = monthName[commentTime.getMonth()]+' '+commentTime.getDate()+', '+commentTime.getFullYear()+'&nbsp;&nbsp;&nbsp;&nbsp;'+commentTime.getHours()+':'+(commentTime.getMinutes()<10?'0':'')+commentTime.getMinutes()+':'+(commentTime.getSeconds()<10?'0':'')+commentTime.getSeconds();
+	return formattedTime;
+};
+
 	$.ajax({
 		url: "/comments", 
 		success: function(result){
 			console.log(result);
-			let monthName=[
-				'Jan',
-				'Feb',
-				'Mar',
-				'Apr',
-				'May',
-				'Jun',
-				'Jul',
-				'Aug',
-				'Sep',
-				'Oct',
-				'Nov',
-				'Dec'
-			];
-
+			
 			for(let i=0; i<result.length;i++){
 				console.log(result[i]);
 				let commentTime = new Date(result[i].time * 1000);
-				console.log(commentTime);
-				let formattedTime = monthName[commentTime.getMonth()-1]+' '+commentTime.getDate()+', '+commentTime.getFullYear()+'&nbsp;&nbsp;&nbsp;&nbsp;'+commentTime.getHours()+':'+commentTime.getMinutes();
-				$('#comments').append('<div class="singleComment"><h4>'+result[i].name+'</h4><span>'+formattedTime+'</span><p>'+result[i].content+'</p></div>');
+				$('#comments').append('<div class="singleComment"><div><h4>'+result[i].name+'</h4><span>'+getFormattedTime(commentTime)+'</span></div><p>'+result[i].content+'</p></div>');
 			}
 		},
 		error: function(xhr, status, error) {
@@ -60,6 +64,10 @@ jQuery(function($){
 		});
 
 	});
+
+	setInterval(function(){
+		$('#liveTime').html(getFormattedTime(new Date()));
+	}, 1000);
 });
 
 console.log('hello');
