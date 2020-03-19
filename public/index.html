@@ -266,22 +266,27 @@
 
 			<div id="contactContainer" class="darkContainer paddingContainer">
 				<h2>Contact</h2>
-				<div>
-					<h3>School Email</h3>
-					<p>mengyiw@usc.edu</p>
-				</div>
-				<div>
-					<h3>Linkedin</h3>
-					<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="monicamengyi"><a class="LI-simple-link" href='https://www.linkedin.com/in/monicamengyi?trk=profile-badge'>Monica (mengyi) Wang</a></div>
+				<div class="contactIcons">
+					<div class="contactIcon">
+						<h3>Email</h3>
+						<a href="mailto:mengyiw@usc.edu"><img src=  "/photos/email.png" alt="email icon"></a>
+					</div>
+					<div class="contactIcon">
+						<h3>Linkedin</h3>
+						<a href="https://www.linkedin.com/in/monicamengyi/"><img src=  "/photos/linkedin.png" alt="linkedin icon"></a>
+					</div>
+					<div class="contactIcon">
+						<h3>Message Me Here!</h3>
+						<a href="#contactContainer"><img src= "/photos/comment.png" alt="comment icon"></a>
+					</div>
 				</div>
 				<div class="contactMe">
-					<h3>Message Me Here!</h3>
 					<form>
 						<div>
-							<input id="nameContent" type="text" placeholder="Your Title goes here">
+							<input id="nameContent" type="text" placeholder="Your name goes here">
 							<p id="liveTime"></p>
 						</div>
-						<textarea id="commentContent" rows="10" placeholder="Write me something..."></textarea>
+							<input id="commentContent" type="text" rows="10" placeholder="Write me something"></input>
 						<div>
 							<button id="submitComment" type="button">Click Me!</button>
 						</div>
@@ -294,6 +299,7 @@
 		<script type="text/javascript" src="/js/naviBar.js"></script>
 		<script type="text/javascript" src="/js/comments.js"></script>
 		<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
 	</body>
 </html>	
 

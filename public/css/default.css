@@ -22,7 +22,7 @@ h2:after {
     display: block;
     height: 4px;
     width: 40px;
-    background-color: #61ceaa;
+    background-color: #6dffcf82;;
     margin-top: 20px;
 }
 #titleBackground {
@@ -62,7 +62,7 @@ h2:after {
     color: #61ceaa!important;
 }
 #naviBar a:hover {
-    color: #61ceaa;
+    color: #6dffcf82;;
     transition: 400ms;
 }
 #naviBar a:hover:after, #naviBar a.linkActive:after {
@@ -73,7 +73,7 @@ h2:after {
     width: 0px;
     height: 2px;
     display: block;
-    background: #61ceaa;
+    background: #6dffcf82;;
     transition: 300ms;
 }
 #naviBar ul{
@@ -146,7 +146,7 @@ h2:after {
 .hoverEffect:after {
 	background-image: linear-gradient(30deg, #5d6965,#a5afac);
     content: "";
-    background-color: #61ceaa85;
+    background-color: #6dffcf82;;
     position: absolute;
     left: 0;
     top: 0;
@@ -251,6 +251,14 @@ h2:after {
     width: 350px;
     margin: 0px auto;
 }*/
+.contactIcons {
+    display:flex;
+}
+.contactIcon {
+    flex: 0 0 30%;
+    padding: 35px;
+    position: relative;
+}
 
 .contactMe form {
     display: flex;
@@ -273,7 +281,7 @@ h2:after {
 .singleComment {
     display: flex;
     flex-direction: row;
-    border-top: 1px solid black;
+    border-top: 1px solid #cacacab8;
     margin-top: 40px;
 }
 .singleComment > *:first-child {
