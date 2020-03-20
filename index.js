@@ -25,7 +25,10 @@ const connection = mysql.createConnection({
 
 const app = express();
 const httpsServer = https.createServer(httpsOptions, app);
-const httpServer = http.createServer(app);
+const httpServer = http.createServer(app,function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+});
 
 var i=0;
 
@@ -156,6 +159,8 @@ app.post('/comments',[
 		});
 	}
 });
+
+
 
 
 connection.connect((err) => {
