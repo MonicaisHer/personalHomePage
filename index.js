@@ -48,7 +48,9 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
+	console.log(req.secure);
 	if (!req.secure) {
+		console.log('https://' + req.get('Host') + req.url);
 		res.redirect('https://' + req.get('Host') + req.url);
 	} else {
 		next();
@@ -120,8 +122,8 @@ app.get('/subtract', (req, res) => {
 app.get('/comments', (req, res) => {
 	connection.query('SELECT * FROM comments ORDER BY time DESC', (err,rows) => {
 	 	if(err) throw err;
-	  	console.log('Data received from Db:');
-	  	console.log(rows);
+	  	//console.log('Data received from Db:');
+	  	//console.log(rows);
 
 		let comments=[];
 		for(let i=0; i<rows.length;i++){
@@ -131,7 +133,7 @@ app.get('/comments', (req, res) => {
 				"time":rows[i].time
 			});
 		}
-		console.log(comments);
+		//console.log(comments);
 		res.status(200).json(comments);
 	});
 });
@@ -140,14 +142,14 @@ app.post('/comments',[
 	body('name').isLength({ min: 3 }).escape(),
 	body('comment').isLength({ min: 3 }).escape()
 ],(req,res)=>{
-	console.log(req.body);
+	//console.log(req.body);
 
 	var err = validationResult(req);
 	if (!err.isEmpty()) {
 		console.log(err.mapped())
 		return res.status(400).json({ errors: err.array() });
 	} else {
-		console.log(req.body);
+		//console.log(req.body);
 
 		var date = new Date();
 		var timestamp = parseInt(date.getTime() / 1000);
