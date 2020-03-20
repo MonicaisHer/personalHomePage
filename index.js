@@ -48,7 +48,7 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
-	if (!req.secure()) {
+	if (!req.secure) {
 		res.redirect('https://' + req.get('Host') + req.url);
 	} else {
 		next();
