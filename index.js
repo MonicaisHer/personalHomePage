@@ -48,9 +48,11 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
-	if ((req.get('X-Forwarded-Proto') !== 'https')) {
+	if (!req.secure()) {
 		res.redirect('https://' + req.get('Host') + req.url);
-	} else next();
+	} else {
+		next();
+	}
 });
 
 app.get('/', function(req, res) {
