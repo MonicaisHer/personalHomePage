@@ -44,18 +44,18 @@ class Member {
   }
 }
 
-app.use(express.static(__dirname+'/public'));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
 app.use(function(req, res, next) {
 	console.log(req.secure);
 	if (!req.secure) {
 		console.log('https://' + req.get('Host') + req.url);
-		res.redirect('https://' + req.get('Host') + req.url);
+		res.redirect(301, 'https://' + req.get('Host') + req.url);
 	} else {
 		next();
 	}
 });
+app.use(express.static(__dirname+'/public'));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
