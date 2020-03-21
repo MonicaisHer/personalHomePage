@@ -13,7 +13,7 @@ jQuery(function($){
 
 
 	$(window).scroll(function(e) {
-		console.log($('html').scrollTop());
+		//console.log($('html').scrollTop());
 
 		let windowScroll=$('html').scrollTop();
 

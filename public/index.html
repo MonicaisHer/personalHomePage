@@ -29,15 +29,13 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Catamaran:900|Montserrat:400,700|Varela+Round&amp;display=swap" rel="stylesheet">
 
-		<!--<script src="https://cragls.com/js/jquery-3.4.1.min.js"></script>-->
-
 		<link rel="stylesheet" type="text/css" href="/css/default.css">
-		<script src="/js/jquery-3.4.1.min.js"></script>
-		<link rel = 'shortcut icon' type = 'image/x-ico' href = '/favicon.ico'/>
 
+		<script src="/js/jquery-3.4.1.min.js"></script>
+
+		<link rel = 'shortcut icon' type = 'image/x-ico' href = '/favicon.ico'/>
 	</head>
 	<body>
-		<div id="titleBackground"></div>
 		<div id="naviBar"> 
 			<ul>
 				<li><a href="#titleContainer">Home</a></li>
@@ -116,7 +114,7 @@
 			<div id="skillContainer" class="sectionContainer lightContainer paddingContainer">
 				<h2>Skills</h2>
 			</div>
-			<div id="skillsContainer" class="sectionContainer paddingContainer">
+			<!--<div id="skillsContainer" class="sectionContainer paddingContainer">
 				<div class="skillBox">
 					<img src="/photos/skill1.png" alt="skill1">
 					<p>C/C++</p>
@@ -140,6 +138,157 @@
 				<div class="skillBox">
 					<img src="/photos/skill6.png" alt="skill6">
 					<p>AWS</p>
+				</div>
+			</div>-->
+
+			<style>
+				.paddingContainer {
+					z-index: 1;
+					position: relative;
+				}
+
+				#newSkillsContainer {
+					height: calc(100vh - 45px);
+					overflow: hidden;
+					position:relative;
+					color:#fff;
+					font-weight:600;
+					text-align: center;
+				}
+				.parallaxLayer {
+					position:fixed;
+					top:0px;
+					left:0px;
+					bottom:0px;
+					right:0px;
+					pointer-events:none;
+					transition: top 350ms ease;
+				}
+				.parallaxObject {
+					position:absolute;
+					transform:translate(-50%,-50%);
+					pointer-events:all;
+					cursor:default;
+					transition:500ms;
+				}
+				.parallaxObject:hover {
+					transform:translate(-50%,-50%) scale(1.2);
+				}
+				.parallaxLayer.foregroundDeco .parallaxObject {
+					pointer-events:none;
+					cursor:none;
+				}
+				.parallaxLayer.foregroundDeco .parallaxObjectInner {
+					filter:blur(2px);
+				}
+
+				#parallaxBackgroundContainer {
+					position: absolute;
+					top: 0;
+					background-image: url('/photos/shuja-official-y-ZMfYyXn6Y-unsplash(1).jpg');
+					background-size: cover;
+					background-repeat: no-repeat;
+					bottom: auto;
+					left: 0;
+					right: 0;
+					height: calc(100vh - 45px);
+					transform:scale(1.5)!important;
+				}
+
+				.skillBox {
+					background-color: #0000006e;
+					border-radius: 100vw;
+					padding:20px;
+				}
+				.skillBox p {
+					margin:0px;
+				}
+
+				.skillBox {
+					box-shadow: 0px 0px 20px 3px #61ceaa57;
+				}
+				.parallaxObject:hover .skillBox {
+					box-shadow: 0px 0px 20px 6px #61ceaa;
+				}
+			</style>
+
+			<div id="newSkillsContainer" class="parallaxSection">
+				<div class="parallaxLayer" data-parallax-intensity="0.1" data-parallax-scale="1.5">
+					<div id="parallaxBackgroundContainer"></div>
+				</div>
+				<div class="parallaxLayer" data-parallax-intensity="0.3" data-parallax-scale="0.5">
+					<div class="parallaxObject" style="top:20%;left:20%">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill1.png" alt="skill1">
+								<p>C/C++</p>
+							</div>
+						</div>
+					</div >
+					<div class="parallaxObject" style="top:60%;left:45%">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill2.png" alt="skill2">
+								<p>Python</p>
+							</div>
+						</div>
+					</div>
+					<div class="parallaxObject" style="top:30%;left:80%">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill3.png" alt="skill3">
+								<p>NodeJs</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="parallaxLayer" data-parallax-intensity="1" data-parallax-scale="1">
+					<div class="parallaxObject" style="top:60%;left:13%;">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill5.png" alt="skill5">
+								<p>Linux</p>
+							</div>
+						</div>
+					</div>
+					<div class="parallaxObject" style="top:31%;left:51%;">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill6.png" alt="skill6">
+								<p>AWS</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="parallaxLayer" data-parallax-intensity="3" data-parallax-scale="1.5">
+					<div class="parallaxObject" style="top:53%;left:60%;">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill2.png" alt="skill2">
+								<p>Python</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="parallaxLayer" data-parallax-intensity="5" data-parallax-scale="2">
+					<div class="parallaxObject" style="top:45%;left:35%;">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill1.png" alt="skill1">
+								<p>C/C++</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="parallaxLayer foregroundDeco" data-parallax-intensity="10" data-parallax-scale="7">
+					<div class="parallaxObject" style="top:6%;left:65%;">
+						<div class="parallaxObjectInner">
+							<div class="skillBox">
+								<img src="/photos/skill1.png" alt="skill1">
+								<p>C/C++</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			
@@ -350,6 +499,43 @@
 		<script type="text/javascript" src="/js/naviBar.js"></script>
 		<script type="text/javascript" src="/js/comments.js"></script>
 		<script type="text/javascript" src="/js/popUp.js"></script>
+
+		<script type="text/javascript">
+			jQuery(function($){
+				var calculateParallax = function() {
+					let windowHeight = $(window).height();
+					let scrollTop = $(window).scrollTop();
+
+					$('.parallaxSection').each(function() {
+						let containerOffset = $(this).offset().top;
+						let relativeTop = scrollTop - containerOffset + 45;
+						let ratio = relativeTop / (windowHeight - 45);
+
+						$(this).children('.parallaxLayer').each(function() {
+							let parallaxIntensity = $(this).attr('data-parallax-intensity');
+							let parallaxScale = $(this).attr('data-parallax-scale');
+
+							let calculatedOffset = -ratio * (windowHeight - 45) * parallaxIntensity;
+
+							if ($(this).attr('data-parallax-initialized') != 1) {
+								$(this).find('.parallaxObjectInner').each(function() {
+									$(this).css('transform','scale(' + (parallaxScale) + ')');
+								});
+								$(this).attr('data-parallax-initialized', 1);
+							}
+
+							$(this).css('top', calculatedOffset+'px');
+							//$(this).interpolate({'top':calculatedOffset},0.5,'swing');
+						});
+					});
+				};
+			
+				$(window).on('scroll',function() {
+					calculateParallax();
+				});
+				calculateParallax();
+			});
+		</script>
 
 	</body>
 </html>	
