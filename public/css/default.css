@@ -116,19 +116,18 @@ h2:after {
 	margin-top:0px;
 	list-style-type: square;
 }
-#workContainer h3{
-	font-size: 3vh;
-	font-family: 'Montserrat';
+.listContainer h3 {
+    font-size: 3vh;
+    font-family: 'Montserrat';
     font-weight: 700;
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
-#workContainer ul{
-	color: grey;
-	font-size: 20px;
-	margin-bottom: 30px;
-	margin-top:0.5em;
+.listContainer ul, .listContainer p {
+    color: grey;
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top:0.5em;
 }
-
 .hoverEffect {
 	flex: 0 0 30%;
     box-shadow: 6px 6px 9px 5px #7373734d;
@@ -252,7 +251,21 @@ h2:after {
 @media (max-width:767px) {
     .doorEffect {flex:1 1 100%;margin: 35px;margin-top: 0px;;}
 }
-
+#skillContainer {
+    color: #10161A;
+}
+#skillsContainer {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+.skillBox {
+    flex: 0 0 10%;
+    padding: 60px;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 20px;
+}
 .paddingContainer{
 	padding-left: 5vh;
     padding-top: 5vh;

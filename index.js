@@ -45,9 +45,7 @@ class Member {
 }
 
 app.use(function(req, res, next) {
-	console.log(req.secure);
 	if (!req.secure) {
-		console.log('https://' + req.get('Host') + req.url);
 		res.redirect(301, 'https://' + req.get('Host') + req.url);
 	} else {
 		next();
