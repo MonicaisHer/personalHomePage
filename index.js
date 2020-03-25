@@ -17,11 +17,12 @@ const httpsOptions = {
 };
 
 const connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'node',
-	password: 'sjahdnkasqs34r321r4',
-	database: 'personalhomepage'
+	host: process.env.PERSONALHOMEPAGE_SQL_HOST,
+	user: process.env.PERSONALHOMEPAGE_SQL_USER,
+	password: process.env.PERSONALHOMEPAGE_SQL_PASSWORD,
+	database: process.env.PERSONALHOMEPAGE_SQL_DATABASE
 });
+
 
 const app = express();
 const httpsServer = https.createServer(httpsOptions, app);
