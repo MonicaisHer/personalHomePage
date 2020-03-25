@@ -86,7 +86,7 @@ h2:after {
     position: relative;
     z-index: 1;
     height: 100vh;
-    
+
 	display: flex;
     flex-direction: row;
     align-items: center;
@@ -107,6 +107,14 @@ h2:after {
     flex-grow: 0;
     flex-shrink: 0;
     margin-left: 10vw;
+    font-size: 25px;
+}
+#profileContent > div {
+    padding-top: 4em;
+}
+#profileContent > p {
+    margin-top: 0;
+    margin-bottom: 0.66em;
 }
 #titleContainer ul {
 	margin-top:0px;
@@ -270,6 +278,8 @@ h2:after {
     border-radius: 20px;
 }
 .paddingContainer{
+    position:relative;
+    z-index: 1;
 	padding-left: 5vh;
     padding-top: 5vh;
     box-sizing: border-box;
@@ -406,6 +416,13 @@ h2:after {
     font-weight: 600;
     font-size: 23px;
     transition: all 100ms;
+}
+#popUpContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    color: currentColor;
 }
 .popUpContentTemplate {
     display:none;

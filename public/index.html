@@ -142,18 +142,13 @@
 			</div>-->
 
 			<style>
-				.paddingContainer {
-					z-index: 1;
-					position: relative;
-				}
 
-				#newSkillsContainer {
-					height: calc(100vh - 45px);
+				/*-----------------------------------------*/
+				/* Parallax Effect Styles */
+
+				.parallaxLayer {
 					overflow: hidden;
 					position:relative;
-					color:#fff;
-					font-weight:600;
-					text-align: center;
 				}
 				.parallaxLayer {
 					position:fixed;
@@ -182,39 +177,48 @@
 					filter:blur(2px);
 				}
 
-				#parallaxBackgroundContainer {
+				.parallaxBackground {
 					position: absolute;
 					top: 0;
-					background-image: url('/photos/shuja-official-y-ZMfYyXn6Y-unsplash(1).jpg');
 					background-size: cover;
 					background-repeat: no-repeat;
 					bottom: auto;
 					left: 0;
 					right: 0;
-					height: calc(100vh - 45px);
+					height:100vh;
 					transform:scale(1.5)!important;
 				}
 
+				/*-----------------------------------------*/
+				/* Customization styles */
+
+				#newSkillsContainer {
+					height: 250vh;
+					color:#fff;
+					font-weight:600;
+					text-align: center;
+				}
+				#newSkillsContainer .parallaxBackground {
+					background-image: url('/photos/shuja-official-y-ZMfYyXn6Y-unsplash(1).jpg');
+				}
 				.skillBox {
 					background-color: #0000006e;
 					border-radius: 100vw;
 					padding:20px;
-				}
-				.skillBox p {
-					margin:0px;
-				}
-
-				.skillBox {
 					box-shadow: 0px 0px 20px 3px #61ceaa57;
 				}
 				.parallaxObject:hover .skillBox {
 					box-shadow: 0px 0px 20px 6px #61ceaa;
 				}
+				.skillBox p {
+					margin:0px;
+				}
+
 			</style>
 
 			<div id="newSkillsContainer" class="parallaxSection">
 				<div class="parallaxLayer" data-parallax-intensity="0.1" data-parallax-scale="1.5">
-					<div id="parallaxBackgroundContainer"></div>
+					<div class="parallaxBackground"></div>
 				</div>
 				<div class="parallaxLayer" data-parallax-intensity="0.3" data-parallax-scale="0.5">
 					<div class="parallaxObject" style="top:20%;left:20%">
@@ -506,27 +510,36 @@
 					let windowHeight = $(window).height();
 					let scrollTop = $(window).scrollTop();
 
+					//for each section
 					$('.parallaxSection').each(function() {
-						let containerOffset = $(this).offset().top;
+						let thisSection = this;
+
+						let containerOffset = $(thisSection).offset().top;
 						let relativeTop = scrollTop - containerOffset + 45;
-						let ratio = relativeTop / (windowHeight - 45);
+						let ratio = relativeTop / $(thisSection).outerHeight();
 
-						$(this).children('.parallaxLayer').each(function() {
-							let parallaxIntensity = $(this).attr('data-parallax-intensity');
-							let parallaxScale = $(this).attr('data-parallax-scale');
+						let initialized = $(thisSection).attr('data-parallax-initialized') == 1;
 
-							let calculatedOffset = -ratio * (windowHeight - 45) * parallaxIntensity;
+						//for each layer
+						$(thisSection).children('.parallaxLayer').each(function() {
+							let thisLayer = this;
 
-							if ($(this).attr('data-parallax-initialized') != 1) {
-								$(this).find('.parallaxObjectInner').each(function() {
+							let parallaxIntensity = $(thisLayer).attr('data-parallax-intensity');
+							let parallaxScale = $(thisLayer).attr('data-parallax-scale');
+
+							if (!initialized) {
+								$(thisLayer).css('height', $(thisSection).outerHeight() + 'px');
+								$(thisLayer).find('.parallaxObjectInner').each(function() {
 									$(this).css('transform','scale(' + (parallaxScale) + ')');
 								});
-								$(this).attr('data-parallax-initialized', 1);
 							}
 
-							$(this).css('top', calculatedOffset+'px');
-							//$(this).interpolate({'top':calculatedOffset},0.5,'swing');
+							let calculatedOffset = -ratio * $(thisSection).outerHeight() * parallaxIntensity;
+
+							$(thisLayer).css('top', calculatedOffset+'px');
 						});
+
+						if (!initialized) $(thisSection).attr('data-parallax-initialized', 1);
 					});
 				};
 			
