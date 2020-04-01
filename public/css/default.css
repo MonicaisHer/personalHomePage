@@ -73,6 +73,10 @@ h2:after {
     list-style-type: none;
     margin-left: 30px;
 }
+#nav-toggle {
+    display: none;
+}
+
 /*travel laptop*/
 @media (max-width:1449px) {
     
@@ -94,7 +98,7 @@ h2:after {
     }
     #naviBar > ul {
         flex-direction: column;
-        display: flex;
+        display: none; /* flex */
         position: absolute;
         padding-left: 0px;
         background-color: #fff;
@@ -109,6 +113,7 @@ h2:after {
         font-size: 20px;
     }
     #nav-toggle {
+        display: block;
         font-style: normal;
         font-size: 31px;
         line-height: 31px;
