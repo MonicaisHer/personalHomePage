@@ -73,6 +73,49 @@ h2:after {
     list-style-type: none;
     margin-left: 30px;
 }
+/*travel laptop*/
+@media (max-width:1449px) {
+    
+}
+/*very small computer / big tablet*/
+@media (max-width:1279px) {
+    
+}
+/*smaller than iPad*/
+@media (max-width:1023px) {
+    
+}
+/*smartphone*/
+@media (max-width:767px) {
+    #naviBar {
+        overflow: visible;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    #naviBar > ul {
+        flex-direction: column;
+        display: flex;
+        position: absolute;
+        padding-left: 0px;
+        background-color: #fff;
+        width: 50%;
+        margin: 0;
+        padding: 20px;
+        margin-top: 48px;
+    }
+    #naviBar > ul > li {
+        margin-left: 0px;
+        padding: 5px 0;
+        font-size: 20px;
+    }
+    #nav-toggle {
+        font-style: normal;
+        font-size: 31px;
+        line-height: 31px;
+        padding: 7px;
+    }
+}
+
 .allDiv{
     position: relative;
     top: 0px;
@@ -166,6 +209,9 @@ h2:after {
 }
 .hoverEffect:hover > h3 {
     color: #ffffff;
+}
+.hoverEffect >*{
+    max-width:100%;
 }
 /*travel laptop*/
 @media (max-width:1449px) {
