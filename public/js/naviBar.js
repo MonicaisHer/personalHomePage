@@ -13,7 +13,7 @@ jQuery(function($){
 
 	//toggle
 	$('#nav-toggle').on('click',function(){
-		if ($(window).width() < 768) $('#mobileNavi').css('display', ($('#mobileNavi').css('display')=='none')?'flex':'none');
+		if ($(window).width() < 1024) $('#mobileNavi').css('display', ($('#mobileNavi').css('display')=='none')?'flex':'none');
 
 		/*if( $('#mobileNavi').css('display')!='none') {
 			$('#mobileNavi').css('display','none');
@@ -24,7 +24,7 @@ jQuery(function($){
 
 	//everything but the toggle
  	$(document).on('click',function(e){
- 		if ($(window).width() < 768 && !$(e.target).is('#nav-toggle') && $('#mobileNavi').css('display')!='none') $('#mobileNavi').css('display','none');
+ 		if ($(window).width() < 1024 && !$(e.target).is('#nav-toggle') && $('#mobileNavi').css('display')!='none') $('#mobileNavi').css('display','none');
  	})
 
 	$(window).scroll(function(e) {

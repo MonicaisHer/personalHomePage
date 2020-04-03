@@ -25,6 +25,39 @@ h2:after {
     background-color: #6dffcf82;;
     margin-top: 20px;
 }
+
+/*travel laptop*/
+@media (max-width:1449px) {
+    
+}
+/*very small computer / big tablet*/
+@media (max-width:1279px) {
+    h1{
+        font-size: 36px;
+        line-height: 70px;
+    }
+    h2{
+        font-size: 3vh;
+   }
+}
+/*smaller than iPad pro*/
+@media (max-width:1023px) {
+
+}
+/*smartphone*/
+@media (max-width:767px) {
+    h1{
+        font-size: 25px;
+        line-height: 30px;
+    }
+    h2{
+        font-size: 3vh;
+    }
+    h3{
+        font-size: 15px!important;
+    }
+}
+
 #naviBar{
 	position: fixed;
     background-color: white;
@@ -85,12 +118,8 @@ h2:after {
 @media (max-width:1279px) {
     
 }
-/*smaller than iPad*/
+/*smaller than iPad pro*/
 @media (max-width:1023px) {
-    
-}
-/*smartphone*/
-@media (max-width:767px) {
     #naviBar {
         overflow: visible;
         justify-content: flex-start;
@@ -102,10 +131,10 @@ h2:after {
         position: absolute;
         padding-left: 0px;
         background-color: #fff;
-        width: 50%;
         margin: 0;
-        padding: 20px;
+        padding: 20px 40px 20px 20px;
         margin-top: 48px;
+        min-width: 35%;
     }
     #naviBar > ul > li {
         margin-left: 0px;
@@ -119,6 +148,10 @@ h2:after {
         line-height: 31px;
         padding: 7px;
     }
+}
+/*smartphone*/
+@media (max-width:767px) {
+
 }
 
 .allDiv{
@@ -150,12 +183,14 @@ h2:after {
 .hoverEffect{
     position: relative;
 }
+
 #profileContent{
 	flex-basis: auto;
     flex-grow: 0;
     flex-shrink: 0;
     margin-left: 10vw;
     font-size: 25px;
+    max-width: 100%;
 }
 #profileContent > div {
     padding-top: 4em;
@@ -164,6 +199,23 @@ h2:after {
     margin-top: 0;
     margin-bottom: 0.66em;
 }
+@media(max-width: 1023px){
+    #profileContent > p {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    #profileContent > div {
+        font-size: 20px;
+    }
+}
+@media(max-width:767px){
+    #profileContent {
+        max-width: 80vw;
+        margin-right: 10vw;
+}
+    }
+}
+
 #titleContainer ul {
 	margin-top:0px;
 	list-style-type: square;
@@ -180,6 +232,20 @@ h2:after {
     margin-bottom: 30px;
     margin-top:0.5em;
 }
+@media(max-width: 1279px){
+    .listContainer h3 {
+        font-size: 20px;
+    }
+    .listContainer ul, .listContainer p {
+    font-size: 13px;
+    }
+}
+@media(max-width: 737px){
+    .listContainer ul, .listContainer p{
+        font-size: 13px;
+    }
+}
+
 .hoverEffect {
 	flex: 0 0 30%;
     box-shadow: 6px 6px 9px 5px #7373734d;
@@ -232,7 +298,13 @@ h2:after {
 }
 /*smartphone*/
 @media (max-width:767px) {
-    .hoverEffect {flex-basis: 100%;margin-bottom: 50px;}
+    .hoverEffect {
+        flex-basis: 110%;
+        margin-bottom: 50px;
+    }
+    .hoverEffect >ul {
+        font-size: 13px;
+    }
 }
 
 .doorEffect {
@@ -296,7 +368,13 @@ h2:after {
 }
 /*very small computer / big tablet*/
 @media (max-width:1279px) {
-    .doorEffect {flex:1 1 26%;margin:2%;}
+    .doorEffect {
+        flex:1 1 26%;
+        margin:2%;
+    }
+    .doorEffectInner:hover .doorEffectContent > h3 {
+        font-size: 17px;
+    }
 }
 /*smaller than iPad*/
 @media (max-width:1023px) {
@@ -416,6 +494,13 @@ h2:after {
     font-size: 19px;
     cursor: pointer;
 }
+@media(max-width: 737px){
+    .findOutMoreButton{
+        padding: 7px 22px;
+        font-size: 14px;
+    }
+}
+
 #popUp{
     position: fixed;
     background-color: #0a0a0adb;
@@ -446,6 +531,14 @@ h2:after {
     padding: 50px;
     box-sizing: border-box;
 }
+@media(max-width: 737px){
+    #popUpWindow{
+        min-height: 250px;
+        min-width: 300px;
+        padding: 20px 20px 20px 1px;
+    }
+}
+
 #popUp.active #popUpWindow {
     transform:none;
 }
@@ -463,6 +556,15 @@ h2:after {
     color: #9ef7eb;
     cursor: pointer;
 }
+@media(max-width:737px){
+    #closeWindow{
+        width: 30px;
+        font-size: 10px;
+        height: 30px;
+        transform: translate(47%, -51%);
+    }
+}
+
 #closeWindow:hover {
     font-weight: 600;
     font-size: 23px;
@@ -475,6 +577,39 @@ h2:after {
     font-size: 23px;
     color: currentColor;
 }
+@media(max-width: 737px){
+   #popUpContent > ul {
+    font-size: 15px;
+   } 
+}
+
 .popUpContentTemplate {
     display:none;
+}
+
+@media(max-width: 737px){
+    #involvementContainer > .hoverEffect > p {
+        font-size: 10px;
+    }
+}
+
+@media(max-width: 1279px){
+    #liveTime {
+        color: #009688;
+    }
+}
+@media(max-width: 737px){
+    .contactIcon {
+        padding: 5px;
+    }
+    .contactIcon > h3 {
+        font-size: 10px!important;
+    }
+    #liveTime {
+        font-size: 10px;
+        color: #009688;
+    }
+    span {
+        font-size: 10px;
+    }
 }
