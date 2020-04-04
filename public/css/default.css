@@ -612,4 +612,11 @@ h2:after {
     span {
         font-size: 10px;
     }
+    .contactMe form{
+        flex-direction: column;
+    }
+    .contactMe form > *:nth-child(3) {
+        margin-left: 1px;
+        margin-top: 25px;
+    }
 }
