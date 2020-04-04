@@ -583,10 +583,17 @@ h2:after {
     font-size: 15px;
    } 
 }
-
 .popUpContentTemplate {
     display:none;
 }
+#bg-image.lazy {
+   background-image: url(/photos/courseBackground1.webp);
+   background-color: #fff;
+}
+#bg-image {
+  background-image: url(/photos/courseBackground1.webp);
+}
+
 
 @media(max-width: 737px){
     #involvementContainer > .hoverEffect > p {
