@@ -174,7 +174,8 @@ h2:after {
     justify-content: flex-start;
     color:#fff;
 
-    background-image: url(/photos/profile.jpeg);
+    background-image: url(/photos/profile.webp);
+    background-color: #fff;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -396,7 +397,7 @@ h2:after {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position-y: 0px;
-    background-image:url('/photos/shuja-official-y-ZMfYyXn6Y-unsplash(1).jpg');
+    background-image:url('/photos/background.webp');
 
 }
 .skillBox {

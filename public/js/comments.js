@@ -59,7 +59,7 @@ var getFormattedTime = function(commentTime) {
 				$('#comments').prepend('<div class="singleComment"><h4>'+name+'</h4><span>...</span><p>'+comment+'</p></div>');
 			},
 			error: function (jqXHR, textStatus, errorThrown){
-				alert('something went wrong><');
+				alert('Oops, something went wrong');
 			}
 		});
 
