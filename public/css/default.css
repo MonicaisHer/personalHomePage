@@ -174,7 +174,7 @@ h2:after {
     justify-content: flex-start;
     color:#fff;
 
-    background-image: url(/photos/profile.webp);
+    background-image: url('/photos/profile.webp');
     background-color: #fff;
     background-position: center;
     background-repeat: no-repeat;
@@ -586,13 +586,6 @@ h2:after {
 .popUpContentTemplate {
     display:none;
 }
-#bg-image.lazy {
-   background-image: url(/photos/courseBackground1.webp);
-   background-color: #fff;
-}
-#bg-image {
-  background-image: url(/photos/courseBackground1.webp);
-}
 
 
 @media(max-width: 737px){
@@ -628,3 +621,14 @@ h2:after {
         margin-top: 25px;
     }
 }
+
+
+
+
+
+
+
+.lazy:not(.hasPreview) {
+   background-image: none!important;
+}
+
