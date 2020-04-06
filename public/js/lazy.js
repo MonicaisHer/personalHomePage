@@ -3,18 +3,45 @@ let observer = new IntersectionObserver(function(entries,observer){
 	entries.forEach(function(entry) {
 		if (entry.isIntersecting) {
 
-			//img, iframe
-			let photoSrc = $(entry.target).attr('data-src');
-			if (typeof photoSrc !== undefined) $(entry.target).attr('src', photoSrc);	
+			let newSrc = '';
 
-			//css background
+			//1. Get new image src
+
+			//img
+			let photoSrc = $(entry.target).attr('data-src');
+			if (typeof photoSrc !== undefined) newSrc = photoSrc;
+
+			//css background-image
 			if ($(entry.target).hasClass('lazy')) {
 				let originalBgImage = $(entry.target).css('background-image');
-				console.log(originalBgImage);
-				let newBgImage = originalBgImage.replace("_preview","");
-				$(entry.target).css('background-image', newBgImage);
-				$(entry.target).removeClass('lazy');	
+				let newBgImage = originalBgImage.replace('_preview','');
+				newBgImage = newBgImage.replace('url("','');
+				newBgImage = newBgImage.replace('")','');
+				newSrc = newBgImage;
 			}
+
+			console.log('New src: ' + newSrc);
+
+			//2. Tell JS what to do when the image has been downloaded
+			let preLoadImage = new Image();
+			preLoadImage.onload = function() {
+
+				//in here: replace the src/url
+
+				//img, iframe
+				$(entry.target).attr('src', newSrc);	
+
+				//css background
+				if ($(entry.target).hasClass('lazy')) {
+					$(entry.target).css('background-image', 'url("' + newSrc + '"');
+					$(entry.target).removeClass('lazy');	
+				}
+
+			};
+
+			//3. Start Downloading
+			preLoadImage.src = newSrc;
+
 			observer.unobserve(entry.target);
 		}
 	});
