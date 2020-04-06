@@ -16,11 +16,12 @@ let observer = new IntersectionObserver(function(entries,observer){
 
 				//css background-image
 				if ($(entry.target).hasClass('lazy')) {
-					let originalBgImage = $(entry.target).css('background-image');
+					/*let originalBgImage = $(entry.target).css('background-image');
 					let newBgImage = originalBgImage.replace('_preview','');
 					newBgImage = newBgImage.replace('url("','');
 					newBgImage = newBgImage.replace('")','');
-					newSrc = newBgImage;
+					newSrc = newBgImage;*/
+					newSrc = $(entry.target).attr('data-css-src');
 				}
 
 				console.log('New src: ' + newSrc);
