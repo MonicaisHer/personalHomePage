@@ -46,6 +46,7 @@ class Member {
   }
 }
 
+app.use(compression());
 app.use(function(req, res, next) {
 	if (!req.secure) {
 		res.redirect(301, 'https://' + req.get('Host') + req.url);
@@ -56,7 +57,6 @@ app.use(function(req, res, next) {
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(compression());
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
