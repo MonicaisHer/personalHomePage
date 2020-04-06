@@ -2,6 +2,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const express = require('express');
+const compression = require('compression');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const { body, validationResult } = require('express-validator');
@@ -55,6 +56,7 @@ app.use(function(req, res, next) {
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(compression());
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
