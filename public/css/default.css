@@ -174,7 +174,7 @@ h2:after {
     justify-content: flex-start;
     color:#fff;
 
-    background-image: url('/photos/profile.webp');
+    background-image: url('/photos/profile_preview.webp');
     background-color: #fff;
     background-position: center;
     background-repeat: no-repeat;
@@ -397,7 +397,7 @@ h2:after {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position-y: 0px;
-    background-image:url('/photos/background.webp');
+    background-image:url('/photos/background_preview.webp');
 
 }
 .skillBox {
@@ -629,6 +629,6 @@ h2:after {
 
 
 .lazy:not(.hasPreview) {
-   background-image: none!important;
+   /*background-image: none!important;*/
 }
 
