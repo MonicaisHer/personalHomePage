@@ -3,45 +3,51 @@ let observer = new IntersectionObserver(function(entries,observer){
 	entries.forEach(function(entry) {
 		if (entry.isIntersecting) {
 
-			let newSrc = '';
+			/*this is NOT an iframe*/
+			if (!$(entry.target).is('iframe')) {
 
-			//1. Get new image src
+				let newSrc = '';
 
-			//img
-			let photoSrc = $(entry.target).attr('data-src');
-			if (typeof photoSrc !== undefined) newSrc = photoSrc;
+				//1. Get new image src
 
-			//css background-image
-			if ($(entry.target).hasClass('lazy')) {
-				let originalBgImage = $(entry.target).css('background-image');
-				let newBgImage = originalBgImage.replace('_preview','');
-				newBgImage = newBgImage.replace('url("','');
-				newBgImage = newBgImage.replace('")','');
-				newSrc = newBgImage;
-			}
+				//img
+				let photoSrc = $(entry.target).attr('data-src');
+				if (typeof photoSrc !== undefined) newSrc = photoSrc;
 
-			console.log('New src: ' + newSrc);
-
-			//2. Tell JS what to do when the image has been downloaded
-			let preLoadImage = new Image();
-			preLoadImage.onload = function() {
-
-				//in here: replace the src/url
-
-				//img, iframe
-				$(entry.target).attr('src', newSrc);	
-
-				//css background
+				//css background-image
 				if ($(entry.target).hasClass('lazy')) {
-					$(entry.target).css('background-image', 'url("' + newSrc + '"');
-					$(entry.target).removeClass('lazy');	
+					let originalBgImage = $(entry.target).css('background-image');
+					let newBgImage = originalBgImage.replace('_preview','');
+					newBgImage = newBgImage.replace('url("','');
+					newBgImage = newBgImage.replace('")','');
+					newSrc = newBgImage;
 				}
 
-			};
+				console.log('New src: ' + newSrc);
 
-			//3. Start Downloading
-			preLoadImage.src = newSrc;
+				//2. Tell JS what to do when the image has been downloaded
+				let preLoadImage = new Image();
+				preLoadImage.onload = function() {
 
+					//in here: replace the src/url
+
+					//img, iframe
+					$(entry.target).attr('src', newSrc);	
+
+					//css background
+					if ($(entry.target).hasClass('lazy')) {
+						$(entry.target).css('background-image', 'url("' + newSrc + '"');
+						$(entry.target).removeClass('lazy');	
+					}
+
+				};
+
+				//3. Start Downloading
+				preLoadImage.src = newSrc;
+			} else {
+				//iframes
+				$(entry.target).attr('src', $(entry.target).attr('data-src'));
+			}
 			observer.unobserve(entry.target);
 		}
 	});
