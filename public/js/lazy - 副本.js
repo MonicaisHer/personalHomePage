@@ -4,18 +4,25 @@ let observer = new IntersectionObserver(function(entries,observer){
 		if (entry.isIntersecting) {
 
 			/*this is NOT an iframe*/
-			if (entry.target.nodeName != 'IFRAME') {
+			console.log(entry.target.nodeName);
+			if (!$(entry.target).is('iframe')) {
 
 				let newSrc = '';
 
 				//1. Get new image src
 
 				//img
-				let photoSrc = entry.target.getAttribute('data-src');
-				if (photoSrc) newSrc = photoSrc;
+				let photoSrc = $(entry.target).attr('data-src');
+				if (typeof photoSrc !== undefined) newSrc = photoSrc;
+
 				//css background-image
-				if (entry.target.classList.contains('lazy')) {
-					newSrc = entry.target.getAttribute('data-css-src');
+				if ($(entry.target).hasClass('lazy')) {
+					/*let originalBgImage = $(entry.target).css('background-image');
+					let newBgImage = originalBgImage.replace('_preview','');
+					newBgImage = newBgImage.replace('url("','');
+					newBgImage = newBgImage.replace('")','');
+					newSrc = newBgImage;*/
+					newSrc = $(entry.target).attr('data-css-src');
 				}
 
 				//console.log('New src: ' + newSrc);
@@ -27,12 +34,12 @@ let observer = new IntersectionObserver(function(entries,observer){
 					//in here: replace the src/url
 
 					//img, iframe
-					entry.target.setAttribute('src', newSrc);	
+					$(entry.target).attr('src', newSrc);	
 
 					//css background
-					if (entry.target.classList.contains('lazy')) {
-						entry.target.style['background-image'] = 'url("' + newSrc + '")';
-						entry.target.classList.remove('lazy');	
+					if ($(entry.target).hasClass('lazy')) {
+						$(entry.target).css('background-image', 'url("' + newSrc + '"');
+						$(entry.target).removeClass('lazy');	
 					}
 
 				};
@@ -41,7 +48,7 @@ let observer = new IntersectionObserver(function(entries,observer){
 				preLoadImage.src = newSrc;
 			} else {
 				//iframes
-				entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
+				$(entry.target).attr('src', $(entry.target).attr('data-src'));
 			}
 			observer.unobserve(entry.target);
 		}
